@@ -1,11 +1,10 @@
-@artifact.package@
+@artifact.package @
 
 import grails.test.mixin.*
 
-@Mock(@artifact.testclass@)
-class @artifact.name@ {
+@Mock(@artifact.testclass @ )
+class @artifact.name @{
 
-    void testSomething() {
-        fail "Implement me"
-    }
+void testSomething () {
+}
 }

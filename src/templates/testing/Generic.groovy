@@ -1,20 +1,23 @@
-@artifact.package@import static org.junit.Assert.*
+@artifact.package @import static org.junit.Assert.*
+
 import org.junit.*
 
-class @artifact.name@ {
+class @artifact.name @{
 
-    @Before
-    void setUp() {
-        // Setup logic here
-    }
+@Before
 
-    @After
-    void tearDown() {
-        // Tear down logic here
-    }
+void setUp() {
+    // Setup logic here
+}
 
-    @Test
-    void testSomething() {
-        fail "Implement me"
-    }
+@After
+void tearDown() {
+    // Tear down logic here
+}
+
+@Test
+void testSomething() {
+    fail "Implement me"
+}
+
 }

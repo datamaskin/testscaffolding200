@@ -1,3 +1,3 @@
-@artifact.package@class @artifact.name@ {
-    static scaffold = true
+@artifact.package @class @artifact.name @{
+static scaffold = true
 }

@@ -1,157 +1,180 @@
-<%=packageName ? "package ${packageName}\n\n" : ''%>
+<%= packageName ? "package ${packageName} \n": '' %>
 
 import org.junit.*
 import grails.test.mixin.*
+import javax.servlet.http.HttpServletResponse
 
 @TestFor(${className}Controller)
 @Mock(${className})
 class ${className}ControllerTests {
 
+def populateValidParams (params) {
+assert params != null
+// TODO: Populate valid properties like...
+//params["name"] = 'someValidName'
+}
 
-    def populateValidParams(params) {
-      assert params != null
-      // TODO: Populate valid properties like...
-      //params["name"] = 'someValidName'
-    }
+void testIndex() {
+    controller.index()
+    assert "/$propertyName/list" == response.redirectedUrl
+}
 
-    void testIndex() {
-        controller.index()
-        assert "/$propertyName/list" == response.redirectedUrl
-    }
+void testList() {
 
-    void testList() {
+    def model = controller.list()
 
-        def model = controller.list()
+    assert model.${propertyName}
+    InstanceList.size() == 0
+    assert model.${propertyName}
+    InstanceTotal == 0
+}
 
-        assert model.${propertyName}InstanceList.size() == 0
-        assert model.${propertyName}InstanceTotal == 0
-    }
+void testCreate() {
+    def model = controller.create()
 
-    void testCreate() {
-       def model = controller.create()
+    assert model.${propertyName}
+    Instance != null
+}
 
-       assert model.${propertyName}Instance != null
-    }
+void testSave() {
+    controller.save()
+    assert response.status == HttpServletResponse.SC_METHOD_NOT_ALLOWED
 
-    void testSave() {
-        controller.save()
+    response.reset()
+    request.method = 'POST'
+    controller.save()
 
-        assert model.${propertyName}Instance != null
-        assert view == '/${propertyName}/create'
+    assert model.${propertyName}
+    Instance != null
+    assert view == '/${propertyName}/create'
 
-        response.reset()
+    response.reset()
 
-        populateValidParams(params)
-        controller.save()
+    populateValidParams(params)
+    controller.save()
 
-        assert response.redirectedUrl == '/${propertyName}/show/1'
-        assert controller.flash.message != null
-        assert ${className}.count() == 1
-    }
+    assert response.redirectedUrl == '/${propertyName}/show/1'
+    assert controller.flash.message != null
+    assert ${className}.count() == 1
+}
 
-    void testShow() {
-        controller.show()
+void testShow() {
+    controller.show()
 
-        assert flash.message != null
-        assert response.redirectedUrl == '/${propertyName}/list'
-
-
-        populateValidParams(params)
-        def ${propertyName} = new ${className}(params)
-
-        assert ${propertyName}.save() != null
-
-        params.id = ${propertyName}.id
-
-        def model = controller.show()
-
-        assert model.${propertyName}Instance == ${propertyName}
-    }
-
-    void testEdit() {
-        controller.edit()
-
-        assert flash.message != null
-        assert response.redirectedUrl == '/${propertyName}/list'
+    assert flash.message != null
+    assert response.redirectedUrl == '/${propertyName}/list'
 
 
-        populateValidParams(params)
-        def ${propertyName} = new ${className}(params)
+    populateValidParams(params)
+    def ${propertyName} = new ${className}(params)
 
-        assert ${propertyName}.save() != null
+    assert ${propertyName}.save() != null
 
-        params.id = ${propertyName}.id
+    params.id = ${propertyName}.id
 
-        def model = controller.edit()
+    def model = controller.show()
 
-        assert model.${propertyName}Instance == ${propertyName}
-    }
+    assert model.${propertyName}Instance == ${propertyName}
+}
 
-    void testUpdate() {
-        controller.update()
+void testEdit() {
+    controller.edit()
 
-        assert flash.message != null
-        assert response.redirectedUrl == '/${propertyName}/list'
-
-        response.reset()
+    assert flash.message != null
+    assert response.redirectedUrl == '/${propertyName}/list'
 
 
-        populateValidParams(params)
-        def ${propertyName} = new ${className}(params)
+    populateValidParams(params)
+    def ${propertyName} = new ${className}(params)
 
-        assert ${propertyName}.save() != null
+    assert ${propertyName}.save() != null
 
-        // test invalid parameters in update
-        params.id = ${propertyName}.id
-        //TODO: add invalid values to params object
+    params.id = ${propertyName}.id
 
-        controller.update()
+    def model = controller.edit()
 
-        assert view == "/${propertyName}/edit"
-        assert model.${propertyName}Instance != null
+    assert model.${propertyName}Instance == ${propertyName}
+}
 
-        ${propertyName}.clearErrors()
+void testUpdate() {
 
-        populateValidParams(params)
-        controller.update()
+    controller.update()
+    assert response.status == HttpServletResponse.SC_METHOD_NOT_ALLOWED
 
-        assert response.redirectedUrl == "/${propertyName}/show/\$${propertyName}.id"
-        assert flash.message != null
+    response.reset()
+    request.method = 'POST'
+    controller.update()
 
-        //test outdated version number
-        response.reset()
-        ${propertyName}.clearErrors()
+    assert flash.message != null
+    assert response.redirectedUrl == '/${propertyName}/list'
 
-        populateValidParams(params)
-        params.id = ${propertyName}.id
-        params.version = -1
-        controller.update()
+    response.reset()
 
-        assert view == "/${propertyName}/edit"
-        assert model.${propertyName}Instance != null
-        assert model.${propertyName}Instance.errors.getFieldError('version')
-        assert flash.message != null
-    }
 
-    void testDelete() {
-        controller.delete()
-        assert flash.message != null
-        assert response.redirectedUrl == '/${propertyName}/list'
+    populateValidParams(params)
+    def ${propertyName} = new ${className}(params)
 
-        response.reset()
+    assert ${propertyName}.save() != null
 
-        populateValidParams(params)
-        def ${propertyName} = new ${className}(params)
+    // test invalid parameters in update
+    params.id = ${propertyName}.id
+    //TODO: add invalid values to params object
 
-        assert ${propertyName}.save() != null
-        assert ${className}.count() == 1
+    controller.update()
 
-        params.id = ${propertyName}.id
+    assert view == "/${propertyName}/edit"
+    assert model.${propertyName}Instance != null
 
-        controller.delete()
+    ${propertyName}.clearErrors()
 
-        assert ${className}.count() == 0
-        assert ${className}.get(${propertyName}.id) == null
-        assert response.redirectedUrl == '/${propertyName}/list'
-    }
+    populateValidParams(params)
+    controller.update()
+
+    assert response.redirectedUrl == "/${propertyName}/show/\$${propertyName}.id"
+    assert flash.message != null
+
+    //test outdated version number
+    response.reset()
+    ${propertyName}.clearErrors()
+
+    populateValidParams(params)
+    params.id = ${propertyName}.id
+    params.version = -1
+    controller.update()
+
+    assert view == "/${propertyName}/edit"
+    assert model.${propertyName}
+    Instance != null
+    assert model.${propertyName}
+    Instance.errors.getFieldError('version')
+    assert flash.message != null
+}
+
+void testDelete() {
+    controller.delete()
+    assert response.status == HttpServletResponse.SC_METHOD_NOT_ALLOWED
+
+    response.reset()
+    request.method = 'POST'
+    controller.delete()
+    assert flash.message != null
+    assert response.redirectedUrl == '/${propertyName}/list'
+
+    response.reset()
+
+    populateValidParams(params)
+    def ${propertyName} = new ${className}(params)
+
+    assert ${propertyName}.save() != null
+    assert ${className}.count() == 1
+
+    params.id = ${propertyName}.id
+
+    controller.delete()
+
+    assert ${className}.count() == 0
+    assert ${className}.get(${propertyName}.id) == null
+    assert response.redirectedUrl == '/${propertyName}/list'
+}
+
 }
