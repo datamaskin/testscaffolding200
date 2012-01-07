@@ -3,7 +3,7 @@ package com.sexingtechnologies.mathconstant
 class AbstractMathConstant {
 
     double temp
-    long counter = 0;
+    long iterations = 10;
 
 //    static hasMany = [piConstants: PiConstant]
 

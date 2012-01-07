@@ -26,7 +26,7 @@
         <tr>
 
             <g:sortableColumn property="counter"
-                              title="${message(code: 'piConstant.counter.label', default: 'Counter')}"/>
+                              title="${message(code: 'piConstant.iterations.label', default: 'Iterations')}"/>
 
             <g:sortableColumn property="denominator"
                               title="${message(code: 'piConstant.denominator.label', default: 'Denominator')}"/>
@@ -45,7 +45,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
-                            id="${piConstantInstance.id}">${fieldValue(bean: piConstantInstance, field: "counter")}</g:link></td>
+                            id="${piConstantInstance.id}">${fieldValue(bean: piConstantInstance, field: "iterations")}</g:link></td>
 
                 <td>${fieldValue(bean: piConstantInstance, field: "denominator")}</td>
 

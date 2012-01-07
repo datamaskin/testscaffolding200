@@ -16,7 +16,7 @@ grails-app/i18n/messages_sv.properties
 grails-app/i18n/messages_th.properties
 grails-app/i18n/messages_zh_CN.properties
 target/
-com.sexingtechnologies.testscaffolding200-grailsPlugins.iml
-com.sexingtechnologies.testscaffolding200.iml
-com.sexingtechnologies.testscaffolding200.ipr
-com.sexingtechnologies.testscaffolding200.iws
+testscaffolding200-grailsPlugins.iml
+testscaffolding200.iml
+testscaffolding200.ipr
+testscaffolding200.iws

@@ -4,4 +4,8 @@ class BootStrap {
     }
     def destroy = {
     }
+
+    void initTestData() {
+
+    }
 }

@@ -38,6 +38,8 @@ class PiConstantController {
             render view: "create", model: [piConstantInstance: piConstantInstance]
             return
         }
+        calculatePi(piConstantInstance.numerator,piConstantInstance.temp,piConstantInstance.denominator,
+                piConstantInstance.sum,piConstantInstance.iterations)
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'piConstant.label', default: 'PiConstant'), piConstantInstance.id])
         redirect action: "show", id: piConstantInstance.id
@@ -62,7 +64,7 @@ class PiConstantController {
             return
         }
         calculatePi(piConstantInstance.numerator,piConstantInstance.temp,piConstantInstance.denominator,
-                piConstantInstance.sum,piConstantInstance.counter)
+                piConstantInstance.sum,piConstantInstance.iterations)
         [piConstantInstance: piConstantInstance]
     }
 
@@ -115,8 +117,9 @@ class PiConstantController {
         }
     }
 
-    def calculatePi(double numerator, double temp, double denominator, double sum, double counter) {
-        while (true) {
+    def calculatePi(double numerator, double temp, double denominator, double sum, long iterations) {
+        def counter = 0, i = 0
+        while (i < iterations) {
             numerator = -numerator
             temp = numerator
             temp /= denominator
@@ -124,10 +127,12 @@ class PiConstantController {
             denominator += 2
             counter++
             if(counter > 10000000) {
-                render(sprintf("1/%.0f - %19.17f\n", denominator, sum))
+                render(sprintf("<p>denom: 1/%.0f pi/4: %19.17f<br>", denominator, sum))
 //                printf()
                 counter = 0
+                i++
             }
         }
+//                printf()
     }
 }
