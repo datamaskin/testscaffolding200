@@ -2,22 +2,20 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: piConstantInstance, field: 'counter', 'error')} required">
-    <label for="counter">
-        <g:message code="piConstant.counter.label" default="Counter"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:field type="number" name="counter" required=""
-             value="${fieldValue(bean: piConstantInstance, field: 'counter')}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: piConstantInstance, field: 'denominator', 'error')} required">
     <label for="denominator">
         <g:message code="piConstant.denominator.label" default="Denominator"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field type="number" name="denominator" required=""
-             value="${fieldValue(bean: piConstantInstance, field: 'denominator')}"/>
+    <g:field type="number" name="denominator" required="" value="${fieldValue(bean: piConstantInstance, field: 'denominator')}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: piConstantInstance, field: 'iterations', 'error')} required">
+    <label for="iterations">
+        <g:message code="piConstant.iterations.label" default="Iterations"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:field type="number" name="iterations" required="" value="${fieldValue(bean: piConstantInstance, field: 'iterations')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: piConstantInstance, field: 'numerator', 'error')} required">
@@ -25,8 +23,7 @@
         <g:message code="piConstant.numerator.label" default="Numerator"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field type="number" name="numerator" required=""
-             value="${fieldValue(bean: piConstantInstance, field: 'numerator')}"/>
+    <g:field type="number" name="numerator" required="" value="${fieldValue(bean: piConstantInstance, field: 'numerator')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: piConstantInstance, field: 'sum', 'error')} required">

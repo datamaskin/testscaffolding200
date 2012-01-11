@@ -1,0 +1,38 @@
+/** styles for inAndOutWidget */
+.transferselect {
+    display:inline;
+    text-align: center;
+    font-family:inherit;
+    font:inherit;
+    margin-right:20px;
+}
+
+.select1 {
+  width: 50%;
+  font-family:sans-serif;
+  font:sans-serif;
+  font-size:small;
+}
+
+.add {
+    font-family:sans-serif;
+    font:sans-serif;
+    font-size:small;
+}
+
+.remove {
+    font-family:sans-serif;
+    font:sans-serif;
+    font-size:small;
+}
+
+.select2 {
+    width: 50%;
+  }
+
+.transferselect a {
+    border: 1px solid #A0CCFF;
+    padding: 2px;
+    margin-top: 5px;
+    width: 10%;
+}

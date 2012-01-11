@@ -11,7 +11,7 @@ html {
 	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
 	background-image: linear-gradient(top, #aaa, #ddd);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaa', EndColorStr = '#ddd');
 	background-repeat: no-repeat;
 	height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
@@ -36,7 +36,6 @@ body {
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
@@ -61,7 +60,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #3366FF;
 }
 
 a:hover, a:active {
@@ -69,13 +68,14 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #003399;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
 }
 
 ul {
+	list-style-position: inside;
 	padding: 0;
 }
 
@@ -108,7 +108,6 @@ img {
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
-	margin-top: 1.5em;
 	padding: 1em;
 	min-height: 1em;
 }
@@ -470,7 +469,8 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	/*background: #E1F2B6;*/
+	background: #A0CCFF;
 }
 
 /* PAGINATION */

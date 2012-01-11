@@ -1,0 +1,108 @@
+/*	---------------------------------------------------------
+ 
+ 	Essentials
+*/
+.apple { 
+	margin: 0; 
+	padding: 0; 
+	height: 38px;
+}
+
+
+
+
+
+/*	---------------------------------------------------------
+
+ 	Optional but recommended
+*/
+.apple ul { width: 150px; }
+
+
+
+
+
+/*	---------------------------------------------------------
+
+ 	Theming
+*/
+
+
+
+/* 		All items 			*/
+.apple a {
+	text-decoration: none;
+}
+.apple a, 
+.apple span { 
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 5px 10px 0 15px;
+	height: 20px;
+}
+
+.apple .first > a, 
+.apple .first > span {
+	-moz-border-radius: 5px 0 0 5px;
+	-webkit-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
+}
+
+.apple .last > a, 
+.apple .last > span {
+	-moz-border-radius: 0 5px 5px 0;
+	-webkit-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+}
+
+
+
+/*		Topitems			*/
+
+.apple .toplevel { 	
+	background: url(../images/applenavbg.png) no-repeat transparent;
+	padding: 10px 0 0 0;
+	text-align: center;
+	font-weight: bold;
+	font-size: 11px;
+    text-transform: lowercase;
+	width: 103px;
+	height: 24px;
+}
+
+/*			standard		*/
+.apple .toplevel {						background-position: 0 0; color: white; }
+
+/*			onmouseover	+ current page	*/
+.apple .toplevel.hover, 
+.apple .toplevel.selected { 			background-position: 0 -38px; background-color: #4a88ed;  }
+
+.apple .toplevel.selected {				background-position: 0 -114px;	}
+
+/*		Subitems			*/
+
+.apple ul {
+	-moz-box-shadow: 0 2px 5px #666;
+	-webkit-box-shadow: 0 2px 5px #666;
+	box-shadow: 0 2px 5px #666; 
+
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+	background-color: #ddd;
+}
+
+
+/*			standard		*/
+.apple .sublevel {
+	color: #333;
+	font-size: 13px;
+}
+
+/*			onmouseover		*/
+.apple .sublevel.hover {				background-color: #4a88ed; }
+
+/*			current page + current page onmouseover	*/
+.apple .sublevel.selected,
+.apple .sublevel.hover.selected { 		background-color: #999; }

@@ -38,8 +38,6 @@ class PiConstantController {
             render view: "create", model: [piConstantInstance: piConstantInstance]
             return
         }
-        calculatePi(piConstantInstance.numerator,piConstantInstance.temp,piConstantInstance.denominator,
-                piConstantInstance.sum,piConstantInstance.iterations)
 
 		flash.message = message(code: 'default.created.message', args: [message(code: 'piConstant.label', default: 'PiConstant'), piConstantInstance.id])
         redirect action: "show", id: piConstantInstance.id
@@ -53,6 +51,8 @@ class PiConstantController {
             return
         }
 
+        calculatePi(piConstantInstance.numerator,piConstantInstance.temp,piConstantInstance.denominator,
+                piConstantInstance.sum,piConstantInstance.iterations)
         [piConstantInstance: piConstantInstance]
     }
 
@@ -63,8 +63,7 @@ class PiConstantController {
             redirect action: "list"
             return
         }
-        calculatePi(piConstantInstance.numerator,piConstantInstance.temp,piConstantInstance.denominator,
-                piConstantInstance.sum,piConstantInstance.iterations)
+
         [piConstantInstance: piConstantInstance]
     }
 
